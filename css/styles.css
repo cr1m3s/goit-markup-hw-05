@@ -14,6 +14,9 @@
   --section-padding: 94px;
   --bg-color: #2f303a70;
   --svg-grey: #afb1b8;
+  --backdrop-color: rgba(0, 0, 0, 0.2);
+  --hover-timing: 250ms;
+  --animation-func: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 h1,
@@ -107,16 +110,36 @@ a:active {
 .contact-link {
   font-size: 14px;
   font-weight: 500;
+
+  transition-property: color fill;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
 .nav-link:hover,
-.contact-link:hover {
+.contact-link:hover,
+.nav-link:focus,
+.contact-link:focus {
   color: var(--blue);
   fill: var(--blue);
 }
 
 .current {
   color: var(--blue);
+  display: flex;
+  flex-direction: column;
+}
+
+.current::after {
+  content: '';
+  width: 100%;
+  height: 4px;
+  position: relative;
+
+  border-radius: 2px;
+  background-color: var(--blue);
+  overflow: hidden;
+  bottom: -30px;
 }
 
 .contact-us {
@@ -143,9 +166,14 @@ a:active {
 .header-icon {
   fill: var(--grey);
   margin-right: 10px;
+
+  transition-property: fill;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.contact-link:hover .header-icon {
+.contact-link:hover .header-icon,
+.contact-link:focus .header-icon {
   fill: var(--blue);
 }
 
@@ -186,10 +214,63 @@ a:active {
   border-radius: 4px;
   color: var(--white);
   cursor: pointer;
+
+  transition-property: opacity;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.primary-button:hover {
+.primary-button:hover,
+.primary-button:focus {
   opacity: 0.9;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--backdrop-color);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--white);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.cross-button {
+  position: absolute;
+  margin-top: 11px;
+  margin-right: 8px;
+  top: 0;
+  right: 0;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-color: var(--white);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Main part*/
@@ -313,17 +394,27 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition-property: background-color;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.teammate-link:hover {
+.teammate-link:hover,
+.teammate-link:focus {
   background-color: var(--blue);
 }
 
 .teammate-social-icon {
   fill: var(--svg-grey);
+
+  transition-property: fill;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.teammate-link:hover .teammate-social-icon {
+.teammate-link:hover .teammate-social-icon,
+.teammate-link:focus .teammate-social-icon {
   fill: var(--white);
 }
 
@@ -356,9 +447,14 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition-property: border;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.company-logo-container:hover {
+.company-logo-container:hover,
+.company-logo-container:focus {
   border: 1px solid var(--blue);
   cursor: pointer;
 }
@@ -369,9 +465,14 @@ a:active {
 
 .client-svg-logo {
   fill: var(--svg-grey);
+
+  transition-property: fill;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.company-logo-container:hover .client-svg-logo {
+.company-logo-container:hover .client-svg-logo,
+.company-logo-container:focus .client-svg-logo {
   fill: var(--blue);
 }
 
@@ -399,19 +500,29 @@ a:active {
   font-size: 14px;
   font-weight: inherit;
   line-height: 2.5;
+
+  transition-property: color;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
 .footer-contact-item {
   color: var(--footer-contacts);
   font-size: 14px;
   line-height: 2.2;
+  list-style: none;
 }
 
-.footer-address-item:hover {
-  color: var(--blue);
+.footer-contact-link {
+  color: inherit;
+
+  transition-property: color;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.footer-contact-item:hover {
+.footer-contact-link:focus,
+.footer-contact-link:hover {
   color: var(--blue);
 }
 
@@ -446,9 +557,14 @@ a:active {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  transition-property: background-color;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.footer-link:hover {
+.footer-link:hover,
+.footer-link:focus {
   background-color: var(--blue);
 }
 
@@ -475,15 +591,21 @@ a:active {
   font-size: 16px;
 }
 
-.secondary-button:hover {
+.secondary-button:hover,
+.secondary-button:focus {
   color: var(--white);
   background-color: var(--blue);
   cursor: pointer;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+
+  transition-property: color background-color;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
-.portfolio-button:hover {
+.portfolio-button:hover,
+.portfolio-button:focus {
   background-color: var(--blue);
   color: var(--white);
   cursor: pointer;
@@ -492,12 +614,21 @@ a:active {
 .projects-list {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.features-element {
+  text-align: left;
+  flex-basis: calc(100% / 4 - 35px);
 }
 
 .project-card {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+  flex-basis: calc(100% / 3 - 2 * var(--default-gap));
+
+  transition-property: box-shadow;
+  transition-duration: var(--hover-timing);
+  transition-timing-function: var(--animation-func);
 }
 
 .project-card:not(:nth-child(3n)) {
@@ -508,10 +639,53 @@ a:active {
   margin-top: var(--default-gap);
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
   cursor: pointer;
+}
+
+.project-card:hover .card-text-animation::before {
+  opacity: 0.9;
+}
+
+.project-card:hover .card-text {
+  opacity: 1;
+}
+
+.card-text-animation {
+  position: relative;
+}
+
+.card-text-animation::before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  background-color: var(--blue);
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90%;
+  text-align: left;
+}
+
+.card-text {
+  font-size: 18px;
+  color: var(--white);
+  line-height: 1.8;
+  letter-spacing: 0.8px;
+  opacity: 0;
 }
 
 .project-card-info {
