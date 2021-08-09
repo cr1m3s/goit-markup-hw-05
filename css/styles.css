@@ -340,11 +340,6 @@ a:active {
   vertical-align: bottom;
 }
 
-.sevice-element {
-  flex-basis: calc(100% / 3 - 2 * var(--default-gap));
-  height: 294px;
-}
-
 .service-element-description {
   position: relative;
 
