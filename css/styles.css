@@ -15,7 +15,7 @@
   --bg-color: #2f303a70;
   --svg-grey: #afb1b8;
   --backdrop-color: rgba(0, 0, 0, 0.2);
-  --hover-timing: 250ms;
+  --hover-timing: 1250ms;
   --animation-func: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -111,9 +111,8 @@ a:active {
   font-size: 14px;
   font-weight: 500;
 
-  transition-property: color fill;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: color var(--hover-timing) var(--animation-func),
+    fill var(--hover-timing) var(--animation-func);
 }
 
 .nav-link:hover,
@@ -169,9 +168,7 @@ a:active {
   fill: var(--grey);
   margin-right: 10px;
 
-  transition-property: fill;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: fill var(--hover-timing) var(--animation-func);
 }
 
 .contact-link:hover .header-icon,
@@ -217,9 +214,7 @@ a:active {
   color: var(--white);
   cursor: pointer;
 
-  transition-property: opacity;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: opacity var(--hover-timing) var(--animation-func);
 }
 
 .primary-button:hover,
@@ -235,11 +230,9 @@ a:active {
   left: 0;
   background-color: var(--backdrop-color);
 
-  transition-property: opacity;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: opacity var(--hover-timing) var(--animation-func);
 
-  z-index: 2;
+  z-index: 10;
 }
 
 .backdrop.is-hidden {
@@ -267,9 +260,8 @@ a:active {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  transition-property: scale opacity;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: scale var(--hover-timing) var(--animation-func),
+    opacity var(--hover-timing) var(--animation-func);
 }
 
 .cross-button {
@@ -360,30 +352,21 @@ a:active {
 
 .service-element-description {
   position: relative;
-
-  width: 100%;
-  height: 100%;
 }
 
 .service-text-container {
   position: absolute;
   bottom: 0;
-  left: 0;
+  padding: 27px 0;
 
-  width: 100%;
-  height: 70px;
-  text-align: left;
+  width: 99%;
   display: flex;
-  align-items: center;
   justify-content: center;
   background-color: var(--dark-bg);
   opacity: 0.8;
-  z-index: 1;
 }
 
 .service-element-text {
-  position: absolute;
-
   font-size: 14px;
   font-weight: 700;
   color: var(--white);
@@ -456,9 +439,7 @@ a:active {
   justify-content: center;
   align-items: center;
 
-  transition-property: background-color;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: background-color var(--hover-timing) var(--animation-func);
 }
 
 .teammate-link:hover,
@@ -469,9 +450,7 @@ a:active {
 .teammate-social-icon {
   fill: var(--svg-grey);
 
-  transition-property: fill;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: fill var(--hover-timing) var(--animation-func);
 }
 
 .teammate-link:hover .teammate-social-icon,
@@ -497,7 +476,7 @@ a:active {
   margin-left: 30px;
 }
 
-.company-logo-container {
+.company-logo-link {
   height: 92px;
   width: 170px;
   border: 1px solid var(--svg-grey);
@@ -509,13 +488,11 @@ a:active {
   justify-content: center;
   align-items: center;
 
-  transition-property: border;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: border var(--hover-timing) var(--animation-func);
 }
 
-.company-logo-container:hover,
-.company-logo-container:focus {
+.company-logo-link:hover,
+.company-logo-link:focus {
   border: 1px solid var(--blue);
   cursor: pointer;
 }
@@ -527,13 +504,11 @@ a:active {
 .client-svg-logo {
   fill: var(--svg-grey);
 
-  transition-property: fill;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: fill var(--hover-timing) var(--animation-func);
 }
 
-.company-logo-container:hover .client-svg-logo,
-.company-logo-container:focus .client-svg-logo {
+.company-logo-link:hover .client-svg-logo,
+.company-logo-link:focus .client-svg-logo {
   fill: var(--blue);
 }
 
@@ -562,9 +537,7 @@ a:active {
   font-weight: inherit;
   line-height: 2.5;
 
-  transition-property: color;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: color var(--hover-timing) var(--animation-func);
 }
 
 .footer-contact-item {
@@ -577,9 +550,7 @@ a:active {
 .footer-contact-link {
   color: inherit;
 
-  transition-property: color;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: color var(--hover-timing) var(--animation-func);
 }
 
 .footer-contact-link:focus,
@@ -619,9 +590,7 @@ a:active {
   justify-content: center;
   align-items: center;
 
-  transition-property: background-color;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: background-color var(--hover-timing) var(--animation-func);
 }
 
 .footer-link:hover,
@@ -660,9 +629,8 @@ a:active {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 
-  transition-property: color background-color;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: background-color var(--hover-timing) var(--animation-func),
+    color var(--hover-timing) var(--animation-func);
 }
 
 .portfolio-button:hover,
@@ -682,9 +650,7 @@ a:active {
 .project-card {
   flex-basis: calc(100% / 3 - 2 * var(--default-gap));
 
-  transition-property: box-shadow;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: box-shadow var(--hover-timing) var(--animation-func);
 }
 
 .project-card:not(:nth-child(3n)) {
@@ -720,9 +686,8 @@ a:active {
   left: 0;
   top: 0;
 
-  transition-property: opacity transform;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: opacity var(--hover-timing) var(--animation-func),
+    transform var(--hover-timing) var(--animation-func);
 }
 
 .text-container {
@@ -738,9 +703,7 @@ a:active {
   justify-content: center;
 
   transform: translateY(100%);
-  transition-property: transform;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: transform var(--hover-timing) var(--animation-func);
 }
 
 .card-text {
@@ -753,9 +716,7 @@ a:active {
   letter-spacing: 0.7px;
   opacity: 0;
 
-  transition-property: opacity;
-  transition-duration: var(--hover-timing);
-  transition-timing-function: var(--animation-func);
+  transition: opacity var(--hover-timing) var(--animation-func);
 }
 
 .project-card:hover .card-text-animation::before {
