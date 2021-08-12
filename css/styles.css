@@ -260,7 +260,7 @@ a:active {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  transition: scale var(--hover-timing) var(--animation-func),
+  transition: transform var(--hover-timing) var(--animation-func),
     opacity var(--hover-timing) var(--animation-func);
 }
 
@@ -503,12 +503,12 @@ a:active {
 
 .clients-svg-item:not(:first-child) {
   margin-left: 30px;
+
+  transition: fill var(--hover-timing) var(--animation-func);
 }
 
 .client-svg-logo {
   fill: var(--svg-grey);
-
-  transition: fill var(--hover-timing) var(--animation-func);
 }
 
 .company-logo-link:hover .client-svg-logo,
@@ -623,19 +623,19 @@ a:active {
   font-family: inherit;
   font-weight: 500;
   font-size: 16px;
+  cursor: pointer;
+  transition: background-color var(--hover-timing) var(--animation-func),
+    color var(--hover-timing) var(--animation-func),
+    box-shadow var(--hover-timing) var(--animation-func);
 }
 
 .secondary-button:hover,
 .secondary-button:focus {
   color: var(--white);
   background-color: var(--blue);
-  cursor: pointer;
+
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-
-  transition: background-color var(--hover-timing) var(--animation-func),
-    color var(--hover-timing) var(--animation-func),
-    box-shadow var(--hover-timing) var(--animation-func);
 }
 
 .portfolio-button:hover,
@@ -666,11 +666,6 @@ a:active {
   margin-top: var(--default-gap);
 }
 
-.project-card:hover {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-}
-
 .card-text-link {
   position: relative;
   overflow: hidden;
@@ -681,6 +676,8 @@ a:active {
 .card-text-link:hover,
 .card-text-link:focus {
   cursor: pointer;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
 .card-text-link img {
@@ -691,23 +688,6 @@ a:active {
 .project-text-container {
   position: relative;
   overflow: hidden;
-}
-
-.project-text-container::before {
-  display: inline-block;
-  content: '';
-
-  position: absolute;
-  background-color: var(--blue);
-  opacity: 0;
-  transform: translateY(100%);
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-
-  transition: opacity var(--hover-timing) var(--animation-func),
-    transform var(--hover-timing) var(--animation-func);
 }
 
 .card-text-animation {
@@ -721,6 +701,7 @@ a:active {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--blue);
 
   transform: translateY(100%);
   transition: transform var(--hover-timing) var(--animation-func);
@@ -740,13 +721,9 @@ a:active {
   transition: opacity var(--hover-timing) var(--animation-func);
 }
 
-.card-text-link:hover .project-text-container::before {
-  opacity: 0.9;
-  transform: translateY(0);
-}
-
 .card-text-link:hover .card-text-animation {
   transform: translateY(0);
+  opacity: 0.9;
 }
 
 .card-text-link:hover .project-card-text {
